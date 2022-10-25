@@ -1,0 +1,30 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title></title>
+    <style type="text/css">
+      .form-control{
+      width: 50%;
+    }
+    </style>
+ </head>
+ <body>
+ <h1>Forgot your password?</h1>
+  <%= form_with url: password_reset_path do |f| %>
+    <p>
+    <%= f.label 'email:',class:"form-label" %><br />
+    <%= f.text_field :email, class:"form-control" %>
+    </p>
+    <p>
+    <%= f.submit 'Reset Password',  class:"btn btn-primary" %>
+    </p>
+  <% end %>
+  <%= link_to 'Sign Up', sign_up_path, class:"btn btn-success" %>
+ </body>
+ </html>
+
+
+
+ 

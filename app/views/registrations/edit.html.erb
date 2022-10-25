@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    .form-control{
+      width: 20%;
+    }
+  </style>
+</head>
+<body>
+<h1>Update Account</h1>
+  <%= form_with model: @user  do |f| %>
+    <p>
+    <%= f.label 'first name',class:"form-label" %><br>
+    <%= f.text_field :first_name , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'last name',class:"form-label" %><br>
+    <%= f.text_field :last_name , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'email' ,class:"form-label" %><br>
+    <%= f.text_field :email, class:"form-control" %>
+    </p>
+
+    <div class="field" >
+    <%= f.label :role %><br />
+    <%= f.select :role, User.roles.keys ,class:"form-label"%>
+    </div>
+    <p>
+    <%= f.submit 'update account', class:"btn btn-primary" %>
+    </p>
+  <% end %>
+    <%= link_to 'back', root_path, class:"btn btn-danger" %>
+
+</body>
+</html>
+

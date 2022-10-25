@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+<style type="text/css">
+  
+  .post
+  {
+    width: 10%;
+    height: 10%;
+
+  }
+</style>
+</head>
+<body>
+  <!-- <div class="mt-3">
+	<%#= link_to 'Back',  user_posts_path, class:"btn btn-danger" %>
+<%#= link_to 'Edit', edit_user_post_path, class:"btn btn-warning" %>
+</div> -->
+
+  <div class="container mt-3">
+<div class = "d-flex justify-content-between">
+  <div>
+ <p> Posted by :- <strong><%= @post.user.first_name %></strong></p>
+  <p>Title :-<strong> <%= @post.title %></strong></p>
+  <p> Description :-<strong> <%= @post.description %> </strong></p>
+  <p>Location :-<strong> <%= @post.location %> </strong>	</p>
+  Created on :-  <strong><%= @post.created_at %></strong>
+</div>
+<div >
+  <%= link_to 'Back',  user_posts_path, class:"btn btn-danger" %>
+<%= link_to 'Edit', edit_user_post_path(@post.user_id, @post.id), class:"btn btn-warning" %>
+  <%#= link_to "Destroy", post_path(@post.id, user.id), class:"btn btn-warning",data: {
+ #                   turbo_method: :delete,
+ #               turbo_confirm: "Are you sure?"
+ #                  } %>
+
+</div>
+  </div>
+
+  <%= image_tag @post.image, width:"500px" ,height:"500px" if @post.image.attached? %>
+
+<div style="width:200px; height: 200px;">
+<%#= video_tag(url_for(@post.avatar),style:'width:200px;height:200px', controls: '')%>
+</div>
+
+<div>
+<%#= audio_tag(url_for(@post.song_file), controls: '') if @post.song_file.attached? %>
+</div> -->
+
+<%# if @post.post_files.attached? %>
+<div style="display: flex; flex-direction: row;">
+  <%#= file_tag url_for(@post.post_files) %>
+
+
+ <!-- <#% @post.post_files.each do |post| %> -->
+      
+  <%# if post.content_type.include?("image") %>
+
+     <%#= image_tag post, class: "post"%>
+   <%# elsif post.content_type.include?("video") %>
+      
+      <%#= video_tag url_for(post), class: "post", controls: ''%>
+   <%# elsif post.content_type.include?("pdf") %>
+      <%#= link_to "Preview_Pdf", post , class: "btn btn-warning"%>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%#= link_to "Download_Pdf", rails_blob_path(post, disposition: "attachment") , class: "btn btn-success" %>
+
+  <%# else %>
+   <!-- <p>You can not preview this file</p> -->
+      <%#= link_to "Download_file", rails_blob_path(post, disposition: "attachment") , class: "btn btn-success" %>
+
+       
+  <%# end %>
+ 
+ <%# end %>
+        </div>
+<%# end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <button>><%#= link_to "Play Song", @post.song_file, class:"html5" %></button> -->
+<!--   <div style="width:100px; height: 100px;">
+<%#= video_tag(url_for(@post.avatar),style:'width:100px;height:100px', controls: '')%>
+</div> -->
+
+
+ <!-- <%#= link_to 'Back', root_path, class:"btn btn-warning" %>  -->
+ <!-- <#%= link_to 'comment', new_post_comment_path(@post.user_id), class:"btn btn-primary" %>  -->
+
+
+ <div class="mt-4"> 
+<button onclick="myFunction()", class="btn btn-primary btn-sm">Create Comment</button>
+</div>
+
+
+
+<br>
+<!-- <h2>Comments</h2> -->
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong><%#= Current.user.first_name %> </strong>
+<strong><%= comment.name %> :- </strong>
+    <%= comment.comment %>
+
+    <%#= link_to 'Reply', new_post_comment_path(comment), class:"btn btn-link btn-sm" %> 
+  
+
+
+  </p>
+<% end %>
+
+
+
+<div id="myDIV">
+  <h2>Add a comment:</h2>
+  
+<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter, class:"form-label"%><br>
+    <%= form.text_field :comment,class:"form-control" %>
+    <!-- <%#= hidden_field :user_id, :value => Current.user.id %> -->
+  </p>
+
+  <p>
+    <%= form.submit class:"btn btn-success"%>
+  </p>
+<% end %> 
+</div>
+
+
+
+</div>
+<!-- <%#= link_to 'Back', root_path, class:"btn btn-warning" %>    -->
+<!-- user_post_path(post.user_id, post.id) -->
+<script type="text/javascript">
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+
+
+function Function() {
+  var x = document.getElementById("ReplyDiv");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+</script>
+</body>
+</html>
+
+

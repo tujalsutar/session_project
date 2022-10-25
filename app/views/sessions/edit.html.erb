@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    .form-control{
+      width: 20%;
+    }
+  </style>
+</head>
+<body>
+<h1>Sign In</h1>
+  <%= form_with url: sign_in_path do |f| %>
+    <p>
+    <%= f.label 'email:', class:"form-label"%><br>
+    <%= f.text_field :email, id: 'email', class:"form-control" %>
+    </p>
+    <p>
+    <%= f.label 'password:', class:"form-label"%><br>
+    <%= f.password_field :password, id: 'password', class:"form-control" %><br>
+    <%= link_to 'Forgot your password?', password_reset_path %>
+    </p>
+    <p>
+    <%= f.submit 'Log In',  class:"btn btn-primary" %>
+    </p>
+  <% end %>
+  You don't have account plz create
+  <%= link_to 'Sign Up', sign_up_path%>
+</body>
+</html>
+
+
+
+

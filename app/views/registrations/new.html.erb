@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    .form-control{
+      width: 20%;
+    }
+  </style>
+</head>
+<body>
+<h1>Sign Up</h1>
+  <%= form_with model: @user, url: sign_up_path do |f| %>
+    <p>
+    <%= f.label 'first name',class:"form-label" %><br>
+    <%= f.text_field :first_name , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'last name',class:"form-label" %><br>
+    <%= f.text_field :last_name , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'email' ,class:"form-label" %><br>
+    <%= f.text_field :email, class:"form-control" %>
+    </p>
+    <!-- <p>
+    <#%= f.file_field :avatar, class:"form-control" %>
+    </p> -->
+
+    <!-- <div class="field" >
+    <%#= f.label :role %><br />
+    <%#= f.select :role, User.roles.keys ,class:"form-label"%>
+    </div> -->
+
+
+    <p>
+    <%= f.label 'password' ,class:"form-label" %><br>
+    <%= f.password_field :password , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'password_confirmation' ,class:"form-label" %><br>
+    <%= f.password_field :password_confirmation, class:"form-control" %>
+    </p>
+    <p>
+    <%= f.submit 'Sign Up', class:"btn btn-primary" %>
+    </p>
+  <% end %>
+  Already have account plz 
+    <%= link_to 'Login', sign_in_path , class:"btn btn-warning "%>
+
+</body>
+</html>
+

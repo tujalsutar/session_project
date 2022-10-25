@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    .form-control{
+      width: 20%;
+    }
+  </style>
+</head>
+<body>
+<h1>Reset your password?</h1>
+  <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |f| %>
+    <p>
+    <%= f.label 'password:', class:"form-label" %><br />
+    <%= f.password_field :password , class:"form-control"%>
+    </p>
+    <p>
+    <%= f.label 'password_confirmation:', class:"form-label" %><br />
+    <%= f.password_field :password_confirmation, class:"form-control" %>
+    </p>
+    <p>
+    <%= f.submit 'Reset Password', class:"btn btn-warning " %>
+    </p>
+  <% end %>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style type="text/css">
+    .form-control{
+      width: 20%;
+    }
+    .form-label
+    {
+      font-size: 20px;
+     
+    }
+  </style>
+</head>
+<body>
+<%= form_with model:[ Current.user, Current.user.posts.build ] do |form| %>
+  <p>
+    <%= form.label :title,class:"form-label" %><br>
+    <%= form.text_field :title , class:"form-control"%>
+  </p>
+  <p>
+    <%= form.label :description,class:"form-label" %><br>
+    <%= form.text_field :description, class:"form-control" %>
+  </p>
+  <p>
+    <%= form.label :location,class:"form-label" %><br>
+    <%= form.text_field :location , class:"form-control"%>
+  </p>
+  <p>
+    <%= form.label :post,class:"form-label" %><br>
+    <%= form.file_field :image , class:"form-control" %>
+  </p>
+  
+  <p>
+    <%= form.submit 'submit' , class:"btn btn-success" %>
+<%= link_to 'Back', root_path, class:"btn btn-primary" %>   
+
+  </p>
+<% end %>
+
+</body>
+</html>
+

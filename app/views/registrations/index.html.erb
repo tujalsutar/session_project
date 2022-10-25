@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.name{
+			width: 100%;
+    			text-align: right;
+			padding-right: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="name">
+  <% if Current.user %>
+   <h5 > Logged in as: <%= Current.user.email%></h5>
+    <!-- <#%= link_to 'Edit Password', edit_password_path %> -->
+    <%= link_to 'Logout', logout_path, method: :delete, class:"btn btn-danger" %>
+    <% else %>
+    <!-- <#%= link_to 'Sign Up', sign_up_path %> -->
+    <!--or -->
+    <!-- <#%= link_to 'Login', sign_in_path , class:"btn-btn-primary"%> -->
+  <% end %>
+</div>
+
+<!-- <#% if Current.user.role == "admin" %> -->
+
+<%= link_to 'Create Post', new_user_post_path(Current.user.id), class:"btn btn-success" %>   
+<%= link_to 'ALL Post', user_posts_path(Current.user.id), class:"btn btn-warning" %>   
+
+
+<!-- <h1>Rails Authentication</h1> -->
+<!-- <#%= link_to 'All posts', user_posts_path, class:"btn btn-success" %>  -->
+	<!-- <#%= link_to 'All posts',user_posts_path, class:"btn btn-success" %> -->
+
+<br>
+ <% if Current.user %>
+<h1 style="text-align: center;">User<span class="text-danger"> Dashboard</span> </h1>
+
+
+	<table class="table">
+ 
+   <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col"></th>
+
+
+    </tr>
+  </thead>
+
+   
+  <tbody>
+  	<% @users.each do |i| %> 
+    <tr>
+      <td><%= i.id %></td>
+      <td><%= i.first_name %></td>
+      <td><%= i.last_name %></td>
+      <td><%= i.email %></td>
+      <td><%= i.role%></td>
+	 <td><%= link_to 'Update', edit_user_path(i), class:"btn btn-success" %></td> 
+    </tr>
+   
+  </tbody>
+  	<% end %>
+</table>
+<!-- <#% end %> -->
+<% else %>
+    <%= link_to 'Sign Up', sign_up_path, class:"btn-btn-success" %>
+    or
+    <%= link_to 'Login', sign_in_path , class:"btn-btn-primary"%>
+ <% end %>
+</body>
+
+</html>
+  

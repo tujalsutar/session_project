@@ -1,0 +1,21 @@
+
+  <h2>Add a comment:</h2>
+<%= form_with model: [ @post, @comment ] do |form| %>
+  <p>
+    <%= form.hidden_field :parent_id %>
+    <%= form.label :reply %><br>
+    <%= form.text_field :comment %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<% if @comment.replies.any? %>
+    <% @comment.replies.each do |reply| %> 
+      <%#= render partial: 'comments/reply', locals: { reply: reply } %>
+      <%= reply.comment %>
+    <% end %>
+  <% end %>
